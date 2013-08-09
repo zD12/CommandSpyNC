@@ -1,0 +1,5 @@
+##
+#COmmandViewer Config
+##
+
+msgFormat: '&1{player} has used the command: &3{command}'
