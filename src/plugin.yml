@@ -1,6 +1,6 @@
 name: CommandViewer
 author: RyanWild / Wild1145 ~ Ex Author RingOfStorms
-version: 2.2
+version: 2.3
 main: com.RingOfStorms.comv.main
 commands:
   commandviewer:
