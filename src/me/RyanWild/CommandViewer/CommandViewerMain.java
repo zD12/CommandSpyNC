@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,10 +17,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
+import net.pravian.bukkitlib.command.BukkitCommandHandler;
+import net.pravian.bukkitlib.config.YamlConfig;
+import org.bukkit.Bukkit;
 
-public class CommandViewerMain extends JavaPlugin
-        implements Listener
+public class CommandViewerMain extends JavaPlugin implements Listener
 {
+    
+    public static final Logger logger = Bukkit.getLogger();
+    
+    public static BukkitCommandHandler handler;
+    
+    public static YamlConfig config;
+
+    public static final String MSG_NO_PERMS = ChatColor.RED + "You do not have permission to use this command.";
 
     private Map<String, String[]> a = new HashMap();
 
