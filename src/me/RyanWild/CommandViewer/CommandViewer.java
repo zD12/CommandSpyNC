@@ -1,6 +1,5 @@
 package me.RyanWild.CommandViewer;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.pravian.bukkitlib.BukkitLib;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,15 +20,16 @@ import org.mcstats.Metrics;
 import net.pravian.bukkitlib.command.BukkitCommandHandler;
 import net.pravian.bukkitlib.config.YamlConfig;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
 
-public class CommandViewerMain extends JavaPlugin implements Listener
+public class CommandViewer extends JavaPlugin implements Listener
 {
-    
+
     public static final Logger logger = Bukkit.getLogger();
-    
     public static BukkitCommandHandler handler;
-    
     public static YamlConfig config;
+    public static CommandViewer plugin;
 
     public static final String MSG_NO_PERMS = ChatColor.RED + "You do not have permission to use this command.";
 
@@ -41,27 +42,30 @@ public class CommandViewerMain extends JavaPlugin implements Listener
     @Override
     public void onEnable()
     {
-        getServer().getPluginManager().registerEvents(this, this);
-
-        File config = new File(getDataFolder(), "config.yml");
-        if (!config.exists())
+        BukkitLib.init(this);
+        plugin = this;
+        handler = new BukkitCommandHandler(plugin);
+        /**
+         * handler.setPermissionMessage(MSG_NO_PERMS);
+         */
+        config = new YamlConfig(plugin, "config.yml", true);
+        config.load();
+        PluginDescriptionFile pdfFile = getDescription();
+        PluginManager pm = getServer().getPluginManager();
+        logger.log(Level.INFO, "{0} Version{1} Has Been Enabled", new Object[]
         {
-            getConfig().options().copyDefaults(true);
-            getConfig().options().copyHeader(true);
-            saveDefaultConfig();
-            getLogger().info("[CommandViewer] Generated default config.yml");
-        }
-
+            pdfFile.getName(), pdfFile.getVersion()
+        });
+        config.options().copyDefaults(true);
+        saveConfig();
         try
         {
             Metrics metrics = new Metrics(this);
             metrics.start();
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            // Failed to submit the stats :-(
+            logger.severe("[" + getDescription().getName() + "] Error Submitting stats!");
         }
-
 
         this.c = ChatColor.translateAlternateColorCodes('&', getConfig().getString("msgFormat", "&1{player} has used the command: &3{command}"));
         getLogger().log(Level.INFO, "[CommandViewer] Format: {0}", this.c);
@@ -96,20 +100,17 @@ public class CommandViewerMain extends JavaPlugin implements Listener
             if (args.length == 0)
             {
                 a(player);
-            }
-            else if (args.length >= 1)
+            } else if (args.length >= 1)
             {
                 if ((args[0].equalsIgnoreCase("toggle")) || (args[0].equalsIgnoreCase("t")))
                 {
                     b(player);
-                }
-                else
+                } else
                 {
                     a(player, args[0]);
                 }
             }
-        }
-        else if ((commandLabel.equalsIgnoreCase("commandviewer")) || (commandLabel.equalsIgnoreCase("comv")))
+        } else if ((commandLabel.equalsIgnoreCase("commandviewer")) || (commandLabel.equalsIgnoreCase("comv")))
         {
             player.sendMessage("No permission");
         }
@@ -169,8 +170,7 @@ public class CommandViewerMain extends JavaPlugin implements Listener
             }
             l1[(l1.length - 1)] = c;
             this.a.put(n, l1);
-        }
-        else
+        } else
         {
             String[] l =
             {
