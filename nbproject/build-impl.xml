@@ -79,14 +79,6 @@ is divided into following sections:
                 <matches pattern="1\.[89](\..*)?" string="${javac.source}"/>
             </and>
         </condition>
-        <condition property="do.archive">
-            <or>
-                <not>
-                    <istrue value="${jar.archive.disabled}"/>
-                </not>
-                <istrue value="${not.archive.disabled}"/>
-            </or>
-        </condition>
         <condition property="do.mkdist">
             <and>
                 <isset property="do.archive"/>
