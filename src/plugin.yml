@@ -1,7 +1,7 @@
 name: CommandViewer
 author: RyanWild / Wild1145 ~ Ex Author RingOfStorms
 version: 2.3
-main: me.RyanWild.CommandViewer
+main: me.RyanWild.CommandViewer.CommandViewer
 commands:
   commandviewer:
     aliases: comv
