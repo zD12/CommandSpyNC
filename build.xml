@@ -83,7 +83,7 @@
         <!-- Generate mapped (with libraries) .jar file -->
         <jar compress="${jar.compress}"  destfile="${dist.jar}">
             
-          <!--   <zipfileset src="${dist.dir}/${ant.project.name}-unmapped.jar" excludes="META-INF/*" />  -->
+            <zipfileset src="${dist.dir}/${ant.project.name}-unmapped.jar" excludes="META-INF/*" />
             
             <zipgroupfileset dir="${dist.dir}/lib/" includes="BukkitLib*" />
             
