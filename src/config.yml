@@ -1,5 +1,10 @@
 ##
-#COmmandViewer Config
-##
+## Command Viewer Config
+## 
 
-msgFormat: '&1{player} has used the command: &3{command}'
+## Currently this config will do absolutly nothing, however I want to make sure that is is ready for the 2.1 release. 
+
+commandhighlights:
+    - stop
+    - reload
+    

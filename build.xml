@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="CommandViewer" default="default" basedir=".">
-    <description>Builds, tests, and runs the project CommandViewer.</description>
+<project name="CommandViewer2" default="default" basedir=".">
+    <description>Builds, tests, and runs the project CommandViewer2.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -51,15 +51,14 @@
       -init-macrodef-junit:     defines macro for junit execution
       -init-macrodef-debug:     defines macro for class debugging
       -init-macrodef-java:      defines macro for class execution
-      -do-jar-with-manifest:    JAR building (if you are using a manifest)
-      -do-jar-without-manifest: JAR building (if you are not using a manifest)
+      -do-jar:                  JAR building
       run:                      execution of project 
       -javadoc-build:           Javadoc generation
       test-report:              JUnit report generation
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="CommandViewer-impl.jar">
+        <target name="run" depends="CommandViewer2-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
@@ -73,33 +72,31 @@
     -->
 	
 	<target name="-post-jar">
-        <echo level="info" message="---- Bukkit Build Generator, by Jerom van der Sar" />
         <echo level="info" message="---- Finalizing Build" />
-        
+
         <!-- Rename unmapped (no libaries) .jar file -->
         <copy file="${dist.jar}" tofile="${dist.dir}/${ant.project.name}-unmapped.jar" />
         <delete file="${dist.dir}/${ant.project.name}.jar" />
-        
+
         <!-- Generate mapped (with libraries) .jar file -->
         <jar compress="${jar.compress}"  destfile="${dist.jar}">
-            
+
             <zipfileset src="${dist.dir}/${ant.project.name}-unmapped.jar" excludes="META-INF/*" />
-            
+
             <zipgroupfileset dir="${dist.dir}/lib/" includes="BukkitLib*" />
-            
+
             <manifest>
                 <attribute name="Main-Class" value="${main.class}" />
             </manifest>
         </jar>
-        
-        <!-- Delete README.txt -->
+
+        <!-- Delete /dist/README.txt -->
         <delete file="${dist.dir}/README.TXT" />
-        
-        <!-- Delete Lib folder -->
-        <delete dir="${dist.dir}/lib/" />
-        
+
+        <!-- Delete /dist/lib folder -->
+        <delete dir="${dist.dir}/lib/" /> 
+
         <echo level="info" message="---- Done" />
     </target>
-	
 	
 </project>

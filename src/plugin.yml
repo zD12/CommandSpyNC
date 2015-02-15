@@ -1,7 +1,8 @@
 name: CommandViewer
-author: RyanWild / Wild1145 ~ Ex Author RingOfStorms
-version: 2.3
-main: me.RyanWild.CommandViewer.CommandViewer
+authors: [Wild1145 / Ryan Wild]
+version: 3.0
+main: com.superiornetworks.commandviewer.CommandViewer
 commands:
-  commandviewer:
-    aliases: comv
+  cmdviewer:
+    description: Toggles your command viewing ability on and off
+    usage: <command>
