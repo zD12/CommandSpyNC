@@ -239,12 +239,12 @@ public class Metrics
                                                                                         }
                                                                                     }
 
-                        // We use the inverse of firstPost because if it is the first time we are posting,
+                                                                                    // We use the inverse of firstPost because if it is the first time we are posting,
                                                                                     // it is not a interval ping, so it evaluates to FALSE
                                                                                     // Each time thereafter it will evaluate to TRUE, i.e PING!
                                                                                     postPlugin(!firstPost);
 
-                        // After the first post we set firstPost to false
+                                                                                    // After the first post we set firstPost to false
                                                                                     // Each post thereafter will be a ping
                                                                                     firstPost = false;
                                                                                 }

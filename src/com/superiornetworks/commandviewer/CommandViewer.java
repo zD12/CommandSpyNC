@@ -18,7 +18,7 @@ public class CommandViewer extends BukkitPlugin
     // YAML Files
     public YamlConfig config;
     public YamlConfig players;
-    
+
     public List<String> allowedplayers;
 
     @Override
@@ -32,7 +32,7 @@ public class CommandViewer extends BukkitPlugin
     public void onEnable()
     {
         BukkitLib.init(plugin);
-      //  handler.setCommandLocation(Command_cmdviewer.class.getPackage());
+        //  handler.setCommandLocation(Command_cmdviewer.class.getPackage());
         this.config = new YamlConfig(plugin, "config.yml");
         this.players = new YamlConfig(plugin, "players.yml");
         config.load();
@@ -51,10 +51,10 @@ public class CommandViewer extends BukkitPlugin
         LoggerUtils.info(plugin, "Has been created by Wild1145 - Check out www.superior-networks.com for great value servers!");
     }
 
-  /*  @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
-    {
-        return handler.handleCommand(sender, cmd, commandLabel, args);
-    }
-*/
+    /*  @Override
+     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
+     {
+     return handler.handleCommand(sender, cmd, commandLabel, args);
+     }
+     */
 }

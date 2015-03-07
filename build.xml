@@ -71,7 +71,7 @@
 
     -->
 	
-	<target name="-post-jar">
+    <target name="-post-jar">
         <echo level="info" message="---- Finalizing Build" />
 
         <!-- Rename unmapped (no libaries) .jar file -->
