@@ -46,12 +46,12 @@ public class PlayerListener implements Listener
         {
             if (plugin.allowedplayers.contains(player.getName()))
             {
-                LoggerUtils.info(plugin, player.getName() + "is already authrised");
+                LoggerUtils.info(plugin, player.getName() + "is already authorised");
             }
             else
             {
                 plugin.allowedplayers.add(player.getName());
-                LoggerUtils.info(plugin, player.getName() + "has been added to the authrised players list.");
+                LoggerUtils.info(plugin, player.getName() + "has been added to the authorised players list.");
             }
         }
         else
@@ -59,11 +59,11 @@ public class PlayerListener implements Listener
             if (plugin.allowedplayers.contains(player.getName()))
             {
                 plugin.allowedplayers.remove(player.getName());
-                LoggerUtils.info(plugin, player.getName() + "Has been removed from the authrised players list");
+                LoggerUtils.info(plugin, player.getName() + "Has been removed from the authorised players list");
             }
             else
             {
-                LoggerUtils.info(plugin, player.getName() + "does not have the required permissions and was not already aurhtised. ");
+                LoggerUtils.info(plugin, player.getName() + "does not have the required permissions and was not already authorised. ");
             }
         }
         plugin.players.save();
