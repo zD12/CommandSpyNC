@@ -1,4 +1,4 @@
-name: CommandViewer
+name: CommandSpyNC
 authors: [Wild1145 / Ryan Wild]
 version: 3.0
 main: com.superiornetworks.commandviewer.CommandViewer
