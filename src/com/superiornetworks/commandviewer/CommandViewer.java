@@ -41,14 +41,14 @@ public class CommandViewer extends BukkitPlugin
         pm.registerEvents(new PlayerListener(plugin), plugin);
         allowedplayers = (List<String>) plugin.players.getList("playerlist");
 
-        LoggerUtils.info(plugin, "Has been created by Wild1145 - Check out www.superior-networks.com for great value servers!");
+        LoggerUtils.info(plugin, "CommandSpyNC has successfully started"); //Removed advertisement
     }
 
     @Override
     public void onDisable()
     {
         config.save();
-        LoggerUtils.info(plugin, "Has been created by Wild1145 - Check out www.superior-networks.com for great value servers!");
+        LoggerUtils.info(plugin, "CommandSpyNC has successfully started"); //Removed advertisement
     }
 
     /*  @Override
